@@ -40,7 +40,7 @@ jobs:
           echo "NEXT_PUBLIC_WHATSAPP_NUMBER=525527595300" >> "$GITHUB_ENV"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build static site
         run: npm run build
