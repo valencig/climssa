@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/seo";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 type ProductCardProps = {
@@ -30,7 +31,7 @@ export function ProductCard({
           className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          src={image}
+          src={withBasePath(image)}
         />
       </div>
       <div className="p-6">

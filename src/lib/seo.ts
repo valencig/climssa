@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.climssa.com";
 
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const defaultTitle =
   "Climssa | Aire acondicionado, instalacion y mantenimiento";
 
@@ -19,7 +21,28 @@ type CreateMetadataOptions = {
 };
 
 export function absoluteUrl(path = "/") {
-  return new URL(path, siteUrl).toString();
+  const normalizedSiteUrl = siteUrl.replace(/\/$/, "");
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  if (normalizedPath === "/") {
+    return `${normalizedSiteUrl}/`;
+  }
+
+  return `${normalizedSiteUrl}${normalizedPath}`;
+}
+
+export function withBasePath(path: string) {
+  if (!basePath || path.startsWith("http")) {
+    return path;
+  }
+
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  if (normalizedPath === basePath || normalizedPath.startsWith(`${basePath}/`)) {
+    return normalizedPath;
+  }
+
+  return `${basePath}${normalizedPath}`;
 }
 
 export function createPageMetadata({
@@ -39,13 +62,13 @@ export function createPageMetadata({
     openGraph: {
       title: titleWithBrand,
       description,
-      url: path,
+      url: absoluteUrl(path),
       siteName: "Climssa",
       locale: "es_MX",
       type: "website",
       images: [
         {
-          url: image,
+          url: absoluteUrl(image),
           width: 1536,
           height: 1024,
           alt: titleWithBrand,
@@ -56,7 +79,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: titleWithBrand,
       description,
-      images: [image],
+      images: [absoluteUrl(image)],
     },
   };
 }

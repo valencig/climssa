@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, ClipboardList } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { getProductBySlug, products } from "@/lib/products";
-import { createPageMetadata } from "@/lib/seo";
+import { createPageMetadata, withBasePath } from "@/lib/seo";
 
 type ProductDetailPageProps = {
   params: Promise<{
@@ -74,7 +74,7 @@ export default async function ProductDetailPage({
               fill
               priority
               sizes="(min-width: 768px) 46vw, 100vw"
-              src={product.image}
+              src={withBasePath(product.image)}
             />
           </div>
 

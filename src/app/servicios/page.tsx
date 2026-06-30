@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { createPageMetadata } from "@/lib/seo";
+import { createPageMetadata, withBasePath } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
   title: "Servicios",
@@ -140,7 +140,7 @@ export default function ServicesPage() {
               fill
               priority
               sizes="(min-width: 768px) 48vw, 100vw"
-              src="/images/minisplit-oficina.png"
+              src={withBasePath("/images/minisplit-oficina.png")}
             />
           </div>
         </div>

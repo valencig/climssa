@@ -1,6 +1,7 @@
 import { MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/seo";
 import { contact, navigationItems } from "@/lib/site";
 import { WhatsAppButton } from "./WhatsAppButton";
 
@@ -29,7 +30,7 @@ export function Header() {
             fill
             priority
             sizes="176px"
-            src="/images/climssa-logo.png"
+            src={withBasePath("/images/climssa-logo.png")}
           />
         </Link>
 

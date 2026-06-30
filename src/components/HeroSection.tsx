@@ -1,6 +1,7 @@
 import { ArrowRight, ShieldCheck, Snowflake, Wrench } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/seo";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 const heroStats = [
@@ -61,7 +62,7 @@ export function HeroSection() {
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 92vw"
-              src="/images/minisplit-residencial.png"
+              src={withBasePath("/images/minisplit-residencial.png")}
             />
           </div>
           <div className="absolute bottom-12 left-0 h-72 w-[74%] overflow-hidden rounded-[2rem] border-8 border-white bg-slate-200 shadow-2xl shadow-blue-950/20">
@@ -70,7 +71,7 @@ export function HeroSection() {
               className="h-full w-full object-cover contrast-110 saturate-90"
               fill
               sizes="(min-width: 1024px) 40vw, 74vw"
-              src="/images/paquete-comercial.png"
+              src={withBasePath("/images/paquete-comercial.png")}
             />
           </div>
           <div className="absolute bottom-0 right-6 rounded-[2rem] bg-blue-900 p-7 text-white shadow-2xl shadow-blue-950/25">

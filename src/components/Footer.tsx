@@ -1,6 +1,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { withBasePath } from "@/lib/seo";
 import { contact, navigationItems } from "@/lib/site";
 import { WhatsAppButton } from "./WhatsAppButton";
 
@@ -15,7 +16,7 @@ export function Footer() {
               className="object-contain object-left"
               fill
               sizes="224px"
-              src="/images/climssa-logo.png"
+              src={withBasePath("/images/climssa-logo.png")}
             />
           </div>
           <p className="mt-4 max-w-md text-sm leading-7 text-slate-600">
