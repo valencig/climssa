@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Climssa Website
 
-## Getting Started
+Sitio web profesional para Climas de Sinaloa SA de CV, construido con Next.js, TypeScript, Tailwind CSS y App Router.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 con App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- ESLint
+
+## Comandos
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Levantar el servidor local:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir el sitio en el navegador:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-## Learn More
+Validar la compilacion de produccion:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Previsualizar el sitio estatico generado en `out/`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run preview:static
+```
 
-## Deploy on Vercel
+Ejecutar lint:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Estructura Inicial
+
+```txt
+src/app/
+	layout.tsx
+	page.tsx
+	globals.css
+```
+
+## Siguientes Pasos
+
+1. Revisar contenido final, acentos y politicas legales antes de publicar.
+2. Configurar GitHub Pages siguiendo [docs/GITHUB_PAGES.md](docs/GITHUB_PAGES.md).
+3. Conectar el formulario a correo, CRM o base de datos cuando se quiera recibir solicitudes reales.

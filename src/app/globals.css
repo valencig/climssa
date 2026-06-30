@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+:root {
+	--climssa-blue: #0b3f91;
+	--climssa-navy: #071f49;
+	--climssa-sky: #eaf4ff;
+	--climssa-slate: #f8fbff;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+	background: var(--climssa-slate);
+}
+
+a {
+	text-decoration: none;
+}
+
+::selection {
+	background: var(--climssa-blue);
+	color: white;
+}
+
+.marquee-track {
+	animation: climssa-marquee 28s linear infinite;
+}
+
+@keyframes climssa-marquee {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
+}
