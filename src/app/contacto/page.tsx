@@ -2,12 +2,12 @@ import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { createPageMetadata } from "@/lib/seo";
-import { contact } from "@/lib/site";
+import { contact, coverageDescription } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Contacto",
+  title: "Contacto de Climas de Sinaloa en CDMX",
   description:
-    "Contacto de Climssa: telefono, WhatsApp, correo y ubicacion en Ciudad de Mexico.",
+    "Contacta a Climssa, Climas de Sinaloa, en la colonia Guerrero, Cuauhtemoc, CDMX. Consulta equipos, refacciones y proyectos por telefono o WhatsApp.",
   path: "/contacto",
   image: "/images/paquete-comercial.png",
 });
@@ -21,11 +21,11 @@ export default function ContactPage() {
             Contacto Climssa
           </p>
           <h1 className="mt-4 text-5xl font-black leading-tight text-blue-950 md:text-6xl">
-            Hablemos de tu proyecto de aire acondicionado
+            Contacta a Climssa en Ciudad de Mexico
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-700">
-            Solicita asesoria para comprar, instalar o mantener equipos de aire
-            acondicionado en Mexico.
+            Climas de Sinaloa esta en CDMX. Solicita equipos para tu negocio,
+            asesoria para reventa o una propuesta de instalacion para tu proyecto.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <WhatsAppButton />
@@ -85,11 +85,9 @@ export default function ContactPage() {
         <section className="rounded-[2rem] border border-blue-950/10 bg-blue-950 p-8 text-white shadow-2xl shadow-blue-950/15 md:col-span-2">
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-              <h2 className="text-3xl font-black">Atencion en Mexico</h2>
+              <h2 className="text-3xl font-black">Atencion en CDMX y zona metropolitana</h2>
               <p className="mt-4 max-w-3xl leading-8 text-blue-100">
-                Climssa atiende solicitudes de venta, instalacion, mantenimiento
-                y refacciones. Comparte tu ciudad, tipo de espacio y servicio
-                requerido para preparar una respuesta mas precisa.
+                {coverageDescription}
               </p>
             </div>
             <WhatsAppButton className="bg-emerald-500 text-white hover:bg-emerald-600" />

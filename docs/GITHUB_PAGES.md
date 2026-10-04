@@ -27,7 +27,7 @@ Open the local URL printed by `serve`.
 To test the same base path used by GitHub Pages, run:
 
 ```bash
-NEXT_PUBLIC_BASE_PATH=/climssa NEXT_PUBLIC_SITE_URL=https://valencig.github.io/climssa npm run build
+NEXT_PUBLIC_BASE_PATH=/climssa NEXT_PUBLIC_SITE_URL=https://valencig.github.io/climssa NEXT_PUBLIC_ALLOW_INDEXING=false npm run build
 npm run preview:github
 ```
 
@@ -48,6 +48,11 @@ If port `3000` is busy, `serve` will print the port it used.
 5. Push to `main` or run the workflow manually from the `Actions` tab.
 
 The workflow builds the static site into `out/` and deploys it to GitHub Pages.
+This target is a demonstration, separate from `https://www.climssa.com/`.
+The workflow sets `NEXT_PUBLIC_ALLOW_INDEXING=false`: pages remain crawlable
+but carry `noindex, follow`, and the demo sitemap contains no URLs.
+For production, leave this setting unset or set it to `true`.
+See [SEO implementation and validation](./SEO_IMPLEMENTATION.md).
 
 ## Current Redirect Diagnosis
 
@@ -92,6 +97,7 @@ The workflow automatically sets:
 ```text
 NEXT_PUBLIC_BASE_PATH=/climssa
 NEXT_PUBLIC_SITE_URL=https://valencig.github.io/climssa
+NEXT_PUBLIC_ALLOW_INDEXING=false
 ```
 
 If your repository is a user/organization site named `YOUR_USER.github.io`, GitHub Pages publishes at the root:

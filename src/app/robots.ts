@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/seo";
+import { absoluteUrl, allowIndexing, siteUrl } from "@/lib/seo";
 
 export const dynamic = "force-static";
 
@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    ...(allowIndexing ? { sitemap: absoluteUrl("/sitemap.xml") } : {}),
     host: siteUrl,
   };
 }

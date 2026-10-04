@@ -19,13 +19,12 @@ import { ScrollTextReveal } from "@/components/ScrollTextReveal";
 import { ServiceCard } from "@/components/ServiceCard";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { products } from "@/lib/products";
-import { absoluteUrl, createPageMetadata } from "@/lib/seo";
-import { contact, partnerBrands, serviceSummaries } from "@/lib/site";
+import { absoluteUrl, createPageMetadata, defaultDescription, defaultTitle } from "@/lib/seo";
+import { contact, coverageDescription, officePath, partnerBrands, professionalPath, serviceSummaries } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Aire acondicionado, instalacion y mantenimiento",
-  description:
-    "Climssa vende, instala y da mantenimiento a equipos de aire acondicionado para casas, negocios y oficinas en Ciudad de Mexico y Mexico.",
+  title: defaultTitle,
+  description: defaultDescription,
   path: "/",
   image: "/images/minisplit-residencial.png",
 });
@@ -35,31 +34,35 @@ const featuredProducts = products.slice(0, 3);
 
 const solutionCards = [
   {
-    title: "Para hogares",
-    description: "Confort eficiente para recamaras, salas y departamentos.",
+    title: "Instaladores y revendedores",
+    description: "Equipos para tus propias instalaciones, mantenimiento o reventa.",
     icon: HomeIcon,
+    href: professionalPath,
   },
   {
-    title: "Para empresas",
-    description: "Soluciones para oficinas, locales y areas de trabajo.",
+    title: "Arquitectos y constructoras",
+    description: "Suministro e instalacion para integrar aire acondicionado a tu obra.",
     icon: Building2,
+    href: "/proyectos",
   },
   {
-    title: "Instalacion",
-    description: "Tecnicos capacitados para montaje y puesta en marcha.",
+    title: "Oficinas y comercios",
+    description: "Instalacion y renovacion de equipos para inmuebles en operacion.",
     icon: Wrench,
+    href: officePath,
   },
   {
     title: "Refacciones",
     description: "Soporte para mantener equipos operando con confianza.",
     icon: ShieldCheck,
+    href: "/productos/ductos-accesorios-refacciones",
   },
 ];
 
 const productCategories = [
   "Minisplits inverter",
   "Cassette comercial",
-  "Sistemas VRF / VRV",
+  "Equipos piso-techo",
   "Equipos tipo paquete",
   "Ductos y accesorios",
   "Refacciones multimarcas",
@@ -67,8 +70,8 @@ const productCategories = [
 
 const whyChooseUs = [
   {
-    title: "Calidad garantizada",
-    description: "Trabajamos con equipos confiables y recomendaciones tecnicas claras.",
+    title: "Seleccion de equipos",
+    description: "Revisamos capacidad, uso y necesidades antes de cotizar.",
     icon: BadgeCheck,
   },
   {
@@ -77,8 +80,8 @@ const whyChooseUs = [
     icon: Headphones,
   },
   {
-    title: "Entrega y cobertura",
-    description: "Atencion en CDMX y envio de equipos a diferentes zonas de Mexico.",
+    title: "Cobertura del proyecto",
+    description: "CDMX y zona metropolitana. Proyectos grandes en otras regiones sujetos a evaluacion.",
     icon: Truck,
   },
   {
@@ -93,12 +96,12 @@ const localBusinessJsonLd = {
   "@type": "HVACBusiness",
   name: contact.legalName,
   alternateName: contact.brandName,
+  description: defaultDescription,
   url: absoluteUrl("/"),
   logo: absoluteUrl("/images/climssa-logo.png"),
   image: absoluteUrl("/images/minisplit-residencial.png"),
   telephone: contact.phone,
   email: contact.email,
-  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Eje Central Lazaro Cardenas 155, Locales A y C, Guerrero",
@@ -121,17 +124,10 @@ const localBusinessJsonLd = {
       closes: "14:00",
     },
   ],
-  areaServed: ["Ciudad de Mexico", "Mexico"],
-  makesOffer: products.map((product) => ({
-    "@type": "Offer",
-    itemOffered: {
-      "@type": "Product",
-      name: product.name,
-      category: product.category,
-      description: product.description,
-      image: absoluteUrl(product.image),
-    },
-  })),
+  areaServed: [
+    { "@type": "City", name: "Ciudad de Mexico" },
+    { "@type": "Place", name: "Zona metropolitana de la Ciudad de Mexico" },
+  ],
 };
 
 export default function Home() {
@@ -181,14 +177,16 @@ export default function Home() {
               Climas de Sinaloa SA de CV
             </p>
             <h2 className="mt-4 max-w-2xl text-4xl font-black leading-tight text-blue-950 md:text-5xl">
-              Venta, instalacion y mantenimiento de aire acondicionado en Mexico.
+              Tu proveedor de aire acondicionado en Ciudad de Mexico.
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-700">
-              Climssa atiende proyectos residenciales, comerciales y de oficina
-              con asesoria para elegir capacidad, tecnologia y configuracion de
-              instalacion. Desde nuestra ubicacion en la colonia Guerrero,
-              Cuauhtemoc, apoyamos clientes en Ciudad de Mexico, zona
-              metropolitana y otros puntos de la Republica Mexicana.
+              Climas de Sinaloa es una empresa ubicada en la colonia Guerrero,
+              Cuauhtemoc, CDMX. Atendemos a profesionales que compran equipos
+              y a clientes que necesitan suministro e instalacion, sin dejar de
+              atender hogares, oficinas y comercios.
+            </p>
+            <p className="mt-4 text-lg leading-8 text-slate-700">
+              {coverageDescription}
             </p>
           </div>
 
@@ -231,6 +229,12 @@ export default function Home() {
                     <p className="mt-4 leading-7 text-slate-600">
                       {solution.description}
                     </p>
+                    <Link
+                      className="mt-6 inline-block font-black text-blue-800 hover:text-blue-950"
+                      href={solution.href}
+                    >
+                      Ver opciones para {solution.title.toLowerCase()}
+                    </Link>
                   </article>
                 </MotionReveal>
               );
@@ -246,7 +250,7 @@ export default function Home() {
               Categorias de producto
             </p>
             <h2 className="mt-4 max-w-2xl text-4xl font-black leading-tight text-blue-950 md:text-5xl">
-              Catalogo para casas, negocios, oficinas y proyectos comerciales.
+              Equipos y refacciones para tus instalaciones y proyectos.
             </h2>
           </div>
           <Link
@@ -361,7 +365,7 @@ export default function Home() {
       <section className="overflow-hidden bg-blue-950 py-20 text-white">
         <div className="mx-auto max-w-7xl px-6">
           <p className="text-sm font-black uppercase text-blue-200">
-            Distribuidores autorizados
+            Consulta marcas y modelos disponibles
           </p>
         </div>
         <div className="mt-8 flex gap-4 whitespace-nowrap marquee-track">

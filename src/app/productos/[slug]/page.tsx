@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle2, ClipboardList } from "lucide-react";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { getProductBySlug, products } from "@/lib/products";
 import { createPageMetadata, withBasePath } from "@/lib/seo";
@@ -40,8 +41,8 @@ export async function generateMetadata({
   }
 
   return createPageMetadata({
-    title: product.name,
-    description: `${product.description} Solicita cotizacion con Climssa para ${product.name}.`,
+    title: `${product.name} en CDMX`,
+    description: `Consulta ${product.name.toLowerCase()} con Climssa en CDMX. Confirma marca, modelo, voltaje y disponibilidad para tu instalacion o reventa.`,
     path: `/productos/${product.slug}`,
     image: product.image,
   });
@@ -62,14 +63,16 @@ export default async function ProductDetailPage({
   return (
     <main className="w-full max-w-full overflow-x-hidden">
       <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <Link className="font-black text-blue-800" href="/productos">
-          Volver al catalogo
-        </Link>
+        <Breadcrumbs items={[
+          { label: "Inicio", href: "/" },
+          { label: "Productos", href: "/productos" },
+          { label: product.name, href: `/productos/${product.slug}` },
+        ]} />
 
         <div className="mt-10 grid gap-12 md:grid-cols-[0.95fr_1.05fr] md:items-start">
           <div className="relative min-h-[460px] overflow-hidden rounded-[2rem] border border-blue-950/10 bg-blue-50 shadow-2xl shadow-blue-950/10">
             <Image
-              alt={product.name}
+              alt={`Imagen ilustrativa: ${product.name}`}
               className="object-cover contrast-105 saturate-90"
               fill
               priority
@@ -80,13 +83,18 @@ export default async function ProductDetailPage({
 
           <div>
             <p className="text-sm font-black uppercase text-blue-700">
-              Producto Climssa
+              Referencia de equipo - Climssa CDMX
             </p>
             <h1 className="mt-4 text-5xl font-black leading-tight text-blue-950 md:text-6xl">
               {product.name}
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-700">
               {product.description}
+            </p>
+            <p className="mt-4 rounded-2xl bg-blue-50 p-4 text-sm leading-6 text-slate-700">
+              Ejemplo orientativo, no una ficha de modelo ni confirmacion de
+              inventario. Consulta marca, modelo, voltaje, precio y condiciones
+              de entrega para tu instalacion o reventa.
             </p>
 
             <div className="mt-8 grid gap-4 rounded-3xl border border-blue-950/10 bg-white p-6 text-slate-700 shadow-sm sm:grid-cols-2">
