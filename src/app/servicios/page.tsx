@@ -13,11 +13,12 @@ import {
 import Link from "next/link";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { createPageMetadata, withBasePath } from "@/lib/seo";
+import { coverageDescription, professionalPath } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Servicios",
+  title: "Instalacion y mantenimiento de aire acondicionado en CDMX",
   description:
-    "Servicios de venta, instalacion y mantenimiento de aire acondicionado para casas, negocios y oficinas.",
+    "Instalacion de minisplits y mantenimiento de aire acondicionado para casas, oficinas y comercios en CDMX y zona metropolitana. Consulta el alcance con Climssa.",
   path: "/servicios",
   image: "/images/minisplit-oficina.png",
 });
@@ -114,13 +115,24 @@ export default function ServicesPage() {
               Servicios Climssa
             </p>
             <h1 className="mt-4 text-5xl font-black leading-tight text-blue-950 md:text-6xl">
-              Aire acondicionado para cada etapa del proyecto
+              Instalacion y mantenimiento de aire acondicionado en CDMX
             </h1>
           </div>
           <div>
             <p className="text-lg leading-8 text-slate-700">
               Te ayudamos a seleccionar, instalar y mantener sistemas de aire
-              acondicionado para hogares, negocios y oficinas en Mexico.
+              acondicionado para hogares, negocios y oficinas en CDMX y zona
+              metropolitana. Para obras nuevas, consulta suministro e instalacion
+              con nuestro equipo de proyectos.
+            </p>
+            <p className="mt-4 leading-7 text-slate-600">
+              <Link className="font-black text-blue-800 hover:underline" href="/proyectos">
+                Proyectos para arquitectos y constructoras
+              </Link>
+              {" · "}
+              <Link className="font-black text-blue-800 hover:underline" href={professionalPath}>
+                Venta de equipos para instaladores
+              </Link>
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
@@ -135,7 +147,7 @@ export default function ServicesPage() {
 
           <div className="relative min-h-[380px] overflow-hidden rounded-[2rem] border border-white bg-white shadow-2xl shadow-blue-950/12">
             <Image
-              alt="Tecnico instalando y revisando servicio de aire acondicionado"
+              alt="Imagen ilustrativa de aire acondicionado en una oficina"
               className="object-cover"
               fill
               priority
@@ -267,8 +279,7 @@ export default function ServicesPage() {
                 Agenda asesoria para venta, instalacion o mantenimiento.
               </h2>
               <p className="mt-5 max-w-2xl leading-8 text-blue-100">
-                Comparte ciudad, tipo de espacio, medida aproximada y el servicio
-                que necesitas. Climssa te orienta con una cotizacion clara.
+                {coverageDescription}
               </p>
             </div>
             <div className="flex flex-wrap gap-4 lg:justify-end">

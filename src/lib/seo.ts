@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
 
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.climssa.com";
+  (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.climssa.com").replace(/\/+$/, "");
 
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+const indexingSetting = process.env.NEXT_PUBLIC_ALLOW_INDEXING ?? "true";
+
+if (indexingSetting !== "true" && indexingSetting !== "false") {
+  throw new Error("NEXT_PUBLIC_ALLOW_INDEXING must be true or false.");
+}
+
+export const allowIndexing = indexingSetting === "true";
+
 export const defaultTitle =
-  "Climssa | Aire acondicionado, instalacion y mantenimiento";
+  "Aire acondicionado en CDMX: venta e instalacion | Climssa";
 
 export const defaultDescription =
-  "Venta, instalacion y mantenimiento de aire acondicionado para casas, negocios y oficinas en Mexico. Solicita tu cotizacion con Climssa.";
+  "Equipos para instaladores y revendedores, y proyectos de instalacion para arquitectos y constructoras en CDMX y zona metropolitana. Cotiza con Climssa.";
 
 export const defaultImage = "/images/minisplit-residencial.png";
 
@@ -21,14 +29,13 @@ type CreateMetadataOptions = {
 };
 
 export function absoluteUrl(path = "/") {
-  const normalizedSiteUrl = siteUrl.replace(/\/$/, "");
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
-  if (normalizedPath === "/") {
-    return `${normalizedSiteUrl}/`;
-  }
+  return `${siteUrl}${normalizedPath}`;
+}
 
-  return `${normalizedSiteUrl}${normalizedPath}`;
+export function pageUrl(path = "/") {
+  return absoluteUrl(`${path.replace(/\/+$/, "")}/`);
 }
 
 export function withBasePath(path: string) {
@@ -54,15 +61,16 @@ export function createPageMetadata({
   const titleWithBrand = title.includes("Climssa") ? title : `${title} | Climssa`;
 
   return {
-    title,
+    title: { absolute: titleWithBrand },
     description,
+    robots: { index: allowIndexing, follow: true },
     alternates: {
-      canonical: path,
+      canonical: pageUrl(path),
     },
     openGraph: {
       title: titleWithBrand,
       description,
-      url: absoluteUrl(path),
+      url: pageUrl(path),
       siteName: "Climssa",
       locale: "es_MX",
       type: "website",

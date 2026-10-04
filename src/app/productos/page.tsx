@@ -3,11 +3,12 @@ import { ProductCard } from "@/components/ProductCard";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { products } from "@/lib/products";
 import { createPageMetadata } from "@/lib/seo";
+import { professionalPath, quoteMessages } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Productos",
+  title: "Equipos y refacciones de aire acondicionado en CDMX",
   description:
-    "Catalogo de minisplits, cassettes, equipos tipo paquete y soluciones de aire acondicionado Climssa.",
+    "Consulta tipos de minisplits, cassette, piso-techo, paquete y refacciones en Climssa, CDMX. Confirma modelo, voltaje y disponibilidad al cotizar.",
   path: "/productos",
   image: "/images/cassette-comercial.png",
 });
@@ -22,22 +23,29 @@ export default function ProductsPage() {
               Catalogo Climssa
             </p>
             <h1 className="mt-4 text-5xl font-black leading-tight text-blue-950 md:text-6xl">
-              Equipos de aire acondicionado para hogares y empresas
+              Equipos y refacciones para instalaciones en CDMX
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-700">
-              Catalogo inicial para cotizar minisplits inverter, cassette,
-              equipos tipo paquete, piso-techo, ductos y refacciones. Por ahora
-              no vendemos en linea, pero puedes solicitar asesoria y cotizacion.
+              Referencias de minisplits inverter, cassette, equipos tipo paquete,
+              piso-techo, ductos y refacciones. Consulta equipos para reventa,
+              instalaciones residenciales o proyectos comerciales. La marca,
+              modelo, voltaje y disponibilidad se confirman al cotizar.
+            </p>
+            <p className="mt-4 leading-7 text-slate-600">
+              Este catalogo contiene ejemplos orientativos e imagenes ilustrativas,
+              no un inventario de modelos disponibles ni una tienda en linea.
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
             <Link
               className="rounded-full bg-blue-800 px-6 py-3 font-black text-white shadow-xl shadow-blue-900/20 transition hover:bg-blue-950"
-              href="/cotizacion"
+              href={professionalPath}
             >
-              Solicitar cotizacion
+              Compra para profesionales
             </Link>
-            <WhatsAppButton variant="outline" />
+            <WhatsAppButton message={quoteMessages.equipment} variant="outline">
+              Cotizar equipos por WhatsApp
+            </WhatsAppButton>
           </div>
         </div>
       </section>

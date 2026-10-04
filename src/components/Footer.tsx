@@ -2,7 +2,7 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { withBasePath } from "@/lib/seo";
-import { contact, navigationItems } from "@/lib/site";
+import { contact, navigationItems, officePath } from "@/lib/site";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 export function Footer() {
@@ -20,9 +20,9 @@ export function Footer() {
             />
           </div>
           <p className="mt-4 max-w-md text-sm leading-7 text-slate-600">
-            Aire acondicionado desde 1988: venta, instalacion, mantenimiento y
-            refacciones para hogares, oficinas, comercios y proyectos
-            empresariales.
+            Climssa - Climas de Sinaloa en Ciudad de Mexico. Equipos para
+            instaladores y revendedores, y suministro e instalacion para
+            arquitectos, constructoras y empresas en CDMX y zona metropolitana.
           </p>
           <div className="mt-6">
             <WhatsAppButton />
@@ -37,6 +37,9 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
+            <Link className="hover:text-blue-800" href={officePath}>
+              Oficinas y comercios
+            </Link>
             <Link className="hover:text-blue-800" href="/images/CREDITS.md">
               Creditos de imagenes
             </Link>

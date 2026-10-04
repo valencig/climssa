@@ -2,7 +2,7 @@ import { ArrowRight, ShieldCheck, Snowflake, Wrench } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { withBasePath } from "@/lib/seo";
-import { WhatsAppButton } from "./WhatsAppButton";
+import { professionalPath } from "@/lib/site";
 
 const heroStats = [
   { label: "Desde 1988", icon: ShieldCheck },
@@ -17,24 +17,31 @@ export function HeroSection() {
       <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-[0.94fr_1.06fr]">
         <div className="relative z-10">
           <p className="text-sm font-black uppercase text-blue-700">
-            Aire acondicionado desde 1988
+            Climssa - Climas de Sinaloa en Ciudad de Mexico
           </p>
           <h1 className="mt-5 max-w-4xl text-[clamp(2.8rem,6vw,5.8rem)] font-black leading-[0.95] text-blue-950">
-            Soluciones en aire acondicionado para empresas y hogares
+            Equipos de aire acondicionado e instalacion en CDMX
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-700">
-            Venta, instalacion, mantenimiento y refacciones con asesoria clara,
-            marcas confiables y soporte tecnico para proyectos en Mexico.
+            Venta de equipos para instaladores y revendedores, y proyectos de
+            instalacion para arquitectos y constructoras. Atencion en Ciudad de
+            Mexico y zona metropolitana.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               className="inline-flex items-center gap-2 rounded-full bg-blue-800 px-6 py-3 font-black text-white shadow-xl shadow-blue-900/20 transition hover:bg-blue-950"
-              href="/productos"
+              href={professionalPath}
             >
-              Ver productos
+              Equipos para mi negocio
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
-            <WhatsAppButton variant="outline">Enviar WhatsApp</WhatsAppButton>
+            <Link
+              className="inline-flex items-center gap-2 rounded-full bg-blue-800 px-6 py-3 font-black text-white shadow-xl shadow-blue-900/20 transition hover:bg-blue-950"
+              href="/proyectos"
+            >
+              Mi proyecto de instalacion
+              <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </Link>
           </div>
           <div className="mt-12 grid gap-4 sm:grid-cols-3">
             {heroStats.map((item) => {

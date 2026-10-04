@@ -37,6 +37,7 @@ jobs:
           fi
           echo "NEXT_PUBLIC_BASE_PATH=$BASE_PATH" >> "$GITHUB_ENV"
           echo "NEXT_PUBLIC_SITE_URL=https://${{ github.repository_owner }}.github.io$BASE_PATH" >> "$GITHUB_ENV"
+          echo "NEXT_PUBLIC_ALLOW_INDEXING=false" >> "$GITHUB_ENV"
           echo "NEXT_PUBLIC_WHATSAPP_NUMBER=525527595300" >> "$GITHUB_ENV"
 
       - name: Install dependencies
@@ -47,6 +48,9 @@ jobs:
 
       - name: Build static site
         run: npm run build
+
+      - name: Verify exported SEO metadata and links
+        run: node --test tests/seo-export.test.mjs
 
       - name: Keep GitHub Pages from ignoring _next
         run: |

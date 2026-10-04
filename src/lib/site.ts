@@ -16,10 +16,26 @@ export const contact = {
   hours: "Lun - Vie 8:00 am - 6:00 pm | Sab 8:00 am - 2:00 pm",
 };
 
+export const professionalPath = "/proveedor-aire-acondicionado-instaladores";
+export const officePath = "/aire-acondicionado-oficinas-comercios";
+
+export const coverageDescription =
+  "Atencion en Ciudad de Mexico y zona metropolitana, incluyendo zonas urbanas del Estado de Mexico. Los proyectos de gran escala en otras regiones del pais se evaluan segun alcance y logistica.";
+
+export const quoteMessages = {
+  equipment:
+    "Hola, soy instalador o revendedor y quiero cotizar equipos con Climssa. Marca o tipo de equipo: __. Capacidad y voltaje (si los conozco): __. Cantidad: __. Lugar de entrega: __.",
+  project:
+    "Hola, quiero cotizar suministro e instalacion para un proyecto con Climssa. Soy arquitecto, constructor o responsable de obra. Ubicacion: __. Tipo de inmueble: __. Etapa de obra y fecha objetivo: __.",
+  office:
+    "Hola, administro una oficina, local o edificio y quiero cotizar aire acondicionado con Climssa. Ubicacion: __. Equipos a instalar o renovar: __. Horarios de acceso: __.",
+};
+
 export const navigationItems = [
   { href: "/", label: "Inicio" },
   { href: "/servicios", label: "Servicios" },
   { href: "/productos", label: "Productos" },
+  { href: professionalPath, label: "Para profesionales" },
   { href: "/proyectos", label: "Proyectos" },
   { href: "/contacto", label: "Contacto" },
 ];
@@ -28,14 +44,14 @@ export const serviceSummaries = [
   {
     title: "Venta de equipos",
     description:
-      "Minisplits, cassette, piso-techo, paquete y sistemas para espacios residenciales o comerciales.",
-    href: "/servicios",
+      "Aire acondicionado para instaladores, revendedores y negocios de instalacion y mantenimiento.",
+    href: professionalPath,
   },
   {
-    title: "Instalacion certificada",
+    title: "Proyectos de instalacion",
     description:
-      "Montaje profesional, puesta en marcha y recomendaciones para cuidar el rendimiento del equipo.",
-    href: "/servicios",
+      "Suministro e instalacion para arquitectos y constructoras en CDMX y zona metropolitana.",
+    href: "/proyectos",
   },
   {
     title: "Mantenimiento",

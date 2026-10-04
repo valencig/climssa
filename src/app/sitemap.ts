@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/lib/products";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, allowIndexing, pageUrl } from "@/lib/seo";
+import { officePath, professionalPath } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -13,6 +14,8 @@ const staticRoutes = [
   { path: "/proyectos", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contacto", changeFrequency: "monthly", priority: 0.8 },
   { path: "/cotizacion", changeFrequency: "monthly", priority: 0.9 },
+  { path: professionalPath, changeFrequency: "monthly", priority: 0.9 },
+  { path: officePath, changeFrequency: "monthly", priority: 0.7 },
 ] satisfies Array<{
   path: string;
   changeFrequency: SitemapEntry["changeFrequency"];
@@ -20,18 +23,16 @@ const staticRoutes = [
 }>;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  if (!allowIndexing) return [];
 
   return [
     ...staticRoutes.map((route) => ({
-      url: absoluteUrl(route.path),
-      lastModified,
+      url: pageUrl(route.path),
       changeFrequency: route.changeFrequency,
       priority: route.priority,
     })),
     ...products.map((product) => ({
-      url: absoluteUrl(`/productos/${product.slug}`),
-      lastModified,
+      url: pageUrl(`/productos/${product.slug}`),
       changeFrequency: "monthly" as const,
       priority: 0.7,
       images: [absoluteUrl(product.image)],

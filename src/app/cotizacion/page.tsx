@@ -2,12 +2,12 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { QuoteForm } from "@/components/QuoteForm";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { createPageMetadata } from "@/lib/seo";
-import { contact } from "@/lib/site";
+import { contact, quoteMessages } from "@/lib/site";
 
 export const metadata = createPageMetadata({
-  title: "Solicitar cotizacion",
+  title: "Cotizar equipos e instalacion de aire acondicionado en CDMX",
   description:
-    "Formulario para solicitar cotizacion de aire acondicionado con Climssa.",
+    "Cotiza equipos para tu negocio o suministro e instalacion para tu obra en CDMX. Contacta a Climssa por WhatsApp con los datos de tu solicitud.",
   path: "/cotizacion",
   image: "/images/minisplit-residencial.png",
 });
@@ -21,14 +21,21 @@ export default function QuotePage() {
             Cotizacion Climssa
           </p>
           <h1 className="mt-4 text-5xl font-black leading-tight text-blue-950 md:text-6xl">
-            Solicita una cotizacion con Climssa
+            Cotiza equipos o un proyecto de instalacion
           </h1>
           <p className="mt-6 text-lg leading-8 text-slate-700">
-            Comparte los datos principales de tu proyecto y el equipo de Climssa
-            te orientara con la mejor solucion disponible.
+            Para compra profesional, comparte equipo, cantidad y destino.
+            Para instalacion, indica ubicacion, tipo de inmueble y etapa de obra.
+            Usa WhatsApp para enviar tu solicitud; el formulario de esta pagina
+            sigue siendo una demostracion y no envia mensajes.
           </p>
-          <div className="mt-8">
-            <WhatsAppButton variant="outline">Prefiero WhatsApp</WhatsAppButton>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <WhatsAppButton message={quoteMessages.equipment} variant="outline">
+              Cotizar equipos para mi negocio
+            </WhatsAppButton>
+            <WhatsAppButton message={quoteMessages.project} variant="outline">
+              Cotizar mi proyecto de instalacion
+            </WhatsAppButton>
           </div>
 
           <div className="mt-10 grid gap-4 rounded-[2rem] border border-blue-950/10 bg-white/80 p-6 text-sm font-bold text-slate-700 shadow-sm backdrop-blur">
